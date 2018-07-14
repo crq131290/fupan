@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/video.js/7.0.3/video-js.min.css" rel="stylesheet">
+    <style type="text/css">
+    .video-js.vjs-playing .vjs-tech {
+        pointer-events: auto;
+    }
+    .vjs-paused .vjs-big-play-button,
+    .vjs-paused.vjs-has-started .vjs-big-play-button {
+        display: block;
+    }
+    .video-js .vjs-time-control{display:block;}
+    .video-js .vjs-remaining-time{display: none;}
+    .video-js {
+        width: 60%;
+        height: 30%;
+        margin: 0 auto; 
+    }
+    .video-js .vjs-tech {
+        position: relative;
+    }
+    </style>
+    
+</head>
+<body>
+    <div >
+        <video 
+        playsinline 
+        id="my-player"
+        class="video-js vjs-big-play-centered"
+        >
+    
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">
+          supports HTML5 video
+        </a>
+      </p>
+    </video>
+    </div>
+
+</body>
+<script src="https://cdn.bootcss.com/video.js/7.0.3/video.min.js"></script>
+<script>
+//     var options = {};
+
+// var player = videojs('my-player', options, function onPlayerReady() {
+//   videojs.log('Your player is ready!');
+
+//   // In this context, `this` is the player that was created by Video.js.
+// //   this.play();
+
+//   // How about an event listener?
+//   this.on('ended', function() {
+//     videojs.log('Awww...over so soon?!');
+//   });
+// });
+var player = videojs('#my-player',
+    {
+    autoplay:false,
+    controls:true,
+  
+    loop : false,
+    muted : false,
+    // poster: "http://vjs.zencdn.net/v/oceans.png",
+    preload:'auto',
+    sources: [{
+    src: 'test.mp4',
+    type: 'video/mp4'
+  }]
+
+    },
+    function onPlayerReady() {
+        let that = this;
+    videojs.log('Your player is ready!'); 
+    videojs.log('Your player is ready!'); 
+})
+    player.on('click',function() {
+        console.log(111)
+        console.log(player.paused())
+        console.log(player.duration())
+    })
+</script>
+</html>

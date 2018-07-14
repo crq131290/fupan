@@ -1,0 +1,32 @@
+<h1>module</h1>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-5 ">
+                    <label class="control-label col-md-4 pd-left-0">模块名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.uid" numberic-input="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1 ">
+                    <div class="col-md-1 pull-right">
+                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!-- Article -->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>视频列表</strong>
+        <div class="btn-group pull-right">
+            <button class="btn btn-success btn-xs">
+                +新增视频
+            </button>
+        </div>
+    </div>

@@ -1,0 +1,65 @@
+<h1>role</h1>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-5 ">
+                    <label class="control-label col-md-4 pd-left-0">角色</label>
+                    <div class="col-md-8">
+                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.occupation">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1 ">
+                    <div class="col-md-1 pull-right">
+                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<!-- Article -->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>视频列表</strong>
+        <div class="btn-group pull-right">
+            <button class="btn btn-success btn-xs">
+                +新增视频
+            </button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table text-center">
+            <thead>
+                <tr class="table-header">
+                    <th>ID</th>
+                    <th>角色</th>
+                    <th>编辑时间</th>
+                    <th>编辑人</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in articleLists">
+                    <td>{{x.ID}}</td>
+                    <td>{{x.role}}</td>
+                    <td>{{x.editoTime}}</td>
+                    <td>{{x.editor}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="check()">查看</button>
+                        <button class="btn btn-warning" ng-click="check()">下架</button>
+                        <button class="btn btn-succsee" ng-click="check()">编辑</button>
+                        <button class="btn btn-danger" ng-click="check()">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页自定义指令 -->

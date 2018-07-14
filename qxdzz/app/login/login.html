@@ -1,0 +1,51 @@
+<div class="login_bg">
+    <div class="signIn_wrap">
+        <input class="login-hide" type="checkbox" id="change" ng-model="login_change">
+        <p class="login_root">求学大作战超管登录</p>
+        <p class="login_normal">求学大作战后台登录</p>
+
+        <label for="change" class="login-change">
+            超管登录切换
+        </label>
+        <form name="loginForm" class="form" novalidate>
+            <!-- 用户名 -->
+            <input name="user" class="form-control login_name" type="text" 
+                   ng-model="name"
+                   ng-pattern="/[a-zA-Z\d]{4,16}/"
+                   required
+                   ng-required="true"
+                   placeholder="请输入用户名"
+                   ng-keydown="keydown($event)"
+            >
+            <!-- tip1 -->
+            <div class="hint" ng-messages="loginForm.user.$error">
+                <div ng-message="required" ng-show="(loginForm.user.$touched) || {{show_msg}}">用户名不能为空</div>
+                <div ng-message="pattern" ng-show="loginForm.user.$touched">请输入6~16数字和字母</div>
+            </div>
+            <!-- 密码 -->
+            <input name="password" class="form-control" type="password" 
+                   ng-model="pwd"
+                   ng-pattern="/[a-zA-Z\d]{4,16}/"
+                   required
+                   ng-required="true"
+                   placeholder="请输入密码"
+                   ng-keyup="keydown($event)"
+                   ng-change="change()"
+            >
+            <!-- tip2 -->
+            <div class="hint" ng-messages="loginForm.password.$error">                
+                <div ng-message="pattern" ng-show="loginForm.password.$touched">请输入6~16位字母与数字组合</div>
+            </div>
+            <input class="submit" type="button" value={{message}}
+                   ng-blur=""
+                   ng-click="login()"
+                   ng-keyup="keydown($event)"
+                   ng-class="{gray:status }"
+                   ng-disabled="loginForm.$invalid"
+            >
+        </form>
+    </div>
+</div>
+<!--  -->
+<!-- ng-pattern="/[a-zA-Z\d]{6,16}/"
+ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9a-zA-z]{6,16}$/" -->

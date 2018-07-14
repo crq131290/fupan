@@ -1,0 +1,112 @@
+<h1>article管理</h1>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">标题</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.nick">
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">编辑人</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.uid" numberic-input="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4 pd-left-0">状态</label>
+                    <div class="col-md-8">
+                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.occupation">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">编辑时间</label>
+                    <div class="col-md-8">
+                        <i class="fa fa-calendar pos-abs-10-20"></i>
+                        <input type="text" placeholder="年/月/日" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.nick">
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">阅读量</label>
+                    <div class="col-md-8">
+                        <input class="float-l form-control max-width-40">
+                        <label class="float-l  ">一</label>
+                        <input class="float-l form-control max-width-40">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4 pd-left-0">收藏量</label>
+                    <div class="col-md-8">
+                        <input class="float-l form-control max-width-40">
+                        <label class="float-l  ">一</label>
+                        <input class="float-l form-control max-width-40">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 pull-right">
+                <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+            </div>
+            <div class="col-md-1 pull-right">
+                <input type="button" value="清空" class="btn btn-danger btn-md form-group" ng-click="search('','','','')">
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Article -->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>文章列表</strong>
+        <div class="btn-group pull-right">
+            <button class="btn btn-success btn-xs">
+                +新增文章
+            </button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table text-center">
+            <thead>
+                <tr class="table-header">
+                    <th>序号</th>
+                    <th>封面</th>
+                    <th>标题</th>
+                    <th>编辑人</th>
+                    <th>编辑时间</th>
+                    <th>阅读量</th>
+                    <th>收藏量</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in articleLists">
+                    <td>{{$index * i + 1}}</td>
+                    <td>
+                        <img src="{{x.src}}">
+                    </td>
+                    <td>
+                        <p class="articl-title">{{x.title}}</p>
+                    </td>
+                    <td>{{x.auther}}</td>
+                    <td>{{x.editTime}}</td>
+                    <td>{{x.nums1}}</td>
+                    <td>{{x.nums2}}</td>
+                    <td>{{x.statue}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="check()">查看</button>
+                        <button class="btn btn-warning" ng-click="check()">下架</button>
+                        <button class="btn btn-succsee" ng-click="check()">编辑</button>
+                        <button class="btn btn-danger" ng-click="check()">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页自定义指令 -->
