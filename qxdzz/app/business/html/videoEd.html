@@ -1,0 +1,197 @@
+<h1>{{header}}视频</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>{{header}}视频</strong>
+    </div>
+    <div class="panel-body">
+        <form name="videoForm" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <!-- <div class="form-group">
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">年级</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.title">
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">科目</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.title">
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">老师</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.title">
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">年级</label>
+                    <div class="col-md-8">
+                        <select ng-disabled="disable" class="form-control ng-pristine ng-untouched ng-valid" ng-model="grade">
+                            <option value="">初一</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">科目</label>
+                    <div class="col-md-8">
+                        <select ng-disabled="disable" class="form-control ng-pristine ng-untouched ng-valid" ng-model="subject">
+                            <option value="">语文</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">老师</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select ng-disabled="disable" class="form-control ng-pristine ng-untouched ng-valid" ng-model="author">
+                                    <option value="">老师昵称</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <input ng-disabled="disable" type="button" value="添加" class="btn btn-primary btn-md form-group"  data-toggle="modal" data-target="#myModal">
+                                </div>
+                                <div class="col-md-6">
+                                    <input ng-disabled="disable" type="button" value="删除" class="btn btn-danger btn-md form-group" ng-click="delete()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">头像</label>
+                    <div class="col-md-8">
+                        编辑老师时显示的
+                        <img class="mx-100-100" src="{{authorImgUrl}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">标题</label>
+                    <div class="col-md-8">
+                        <input  
+                            type="text" 
+                            class="form-control ng-pristine ng-untouched ng-valid" 
+                            name="vtitle" 
+                            ng-disabled="disable"
+                            ng-required="true"
+                            type="text" 
+                            ng-model="title"
+                            maxlength="80">
+                        <div class="hint col-md-12" ng-messages="videoForm.vtitle.$error">
+                            <div class=" row" ng-message="required" ng-show="((videoForm.vtitle.$touched) || {{show_msg}}) && !banerSub">标题不能为空</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                    <div class="col-md-10 ">
+                        <label class="control-label col-md-4 pd-left-0">分类</label>
+                        <div class="col-md-8">
+                            <select ng-disabled="disable" class="form-control ng-pristine ng-untouched ng-valid"  ng-model="classify" ng-change="changeClass(classify)">
+                                <option value="1">card视频</option>
+                                <option value="2">banner图</option>
+                            </select>                         
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">简介</label>
+                    <div class="col-md-8">
+                        <textarea                                
+                            name="vdigest"
+                            ng-disabled="disable" 
+                            ng-model="digest"
+                            ng-required="true"
+                            maxlength="280"
+                            name="txt" 
+                            clos=",50" 
+                            rows="5" 
+                            class="form-control ng-pristine ng-untouched ng-valid" 
+                            warp="virtual">
+                        </textarea>
+                        <div class="hint col-md-12" ng-messages="videoForm.vdigest.$error">
+                            <div class=" row" ng-message="required" ng-show="((videoForm.vdigest.$touched) || {{show_msg}}) && !banerSub">简介不能为空</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">封面</label>
+                    <div class="col-md-8">
+                        <upload-file tipshow="tipshow" imgshow="imgshow" url="url" myimg-url="myimgUrl" img-url="imgUrl" disable="disable"></upload-file>                      
+                    </div>
+                    <!-- <input ng-model="myimgUrl"> -->
+                </div>
+            </div>
+            <my-video video-url="videoUrl" disable="{{disable}}"> </my-video>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">正文</label>
+                    <div class="col-md-8">
+                           <!-- tip1 -->
+                           <div  class="hint col-md-12">
+                                <div class=" row" ng-show="tboxShow && !banerSub && checkBoxShow ">正文不能为空</div>
+                            </div>
+                        <div ng-disabled="disable" id="explain"  ng-blur="checkText()"></div>    
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input ng-disabled="disable" type="button" value="取消" class="btn btn-danger btn-md form-group" ng-click="cancle()">
+                            <input ng-if="banerSub" ng-disabled="!banerSub || tipshow" type="button" value="保存" class="btn btn-info btn-md form-group pull-right" ng-click="sendData()">
+                            <input ng-if="cardSub" ng-disabled="disable || (videoForm.$invalid) || tipshow || tboxShow" type="button" value="保存" class="btn btn-info btn-md form-group pull-right" ng-click="sendData()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 基于bootstrap模态框-自定义指令myModal -->
+<div >
+    <!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >触发模态框按钮</button> -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div class="flex">
+                        <label class="control-label col-md-2 pd-left-0">老师昵称</label>
+                        <div class="col-md-4">
+                            <input type="text" maxlength="20" class="form-control ng-pristine ng-untouched ng-valid" ng-model="authorName">                                
+                        </div>
+                    </div>                    
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 padd-btm-15">头像</div>
+                    <upload-file tipshow="tipshow" imgshow="imgshow" url="url" myimg-url="myimgUrl" img-url="imgUrl"></upload-file>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="modal_Click(false)">取消</button>
+                    <button ng-disabled="!imgshow" type="button" class="btn btn-success" data-dismiss="modal" ng-click="modal_Click(true)"> 确定 </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>

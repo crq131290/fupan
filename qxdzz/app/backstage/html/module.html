@@ -7,12 +7,12 @@
                 <div class="col-md-5 ">
                     <label class="control-label col-md-4 pd-left-0">模块名</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.uid" numberic-input="">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="moduleName" numberic-input="">
                     </div>
                 </div>
                 <div class="col-md-5 col-md-offset-1 ">
                     <div class="col-md-1 pull-right">
-                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(moduleName)">
                     </div>
                 </div>
             </div>
@@ -22,11 +22,52 @@
 </div>
 <!-- Article -->
 <div class="panel panel-primary">
-    <div class="panel-heading">
-        <strong>视频列表</strong>
-        <div class="btn-group pull-right">
-            <button class="btn btn-success btn-xs">
-                +新增视频
-            </button>
+        <div class="panel-heading">
+            <strong>模块列表</strong>
+            <div class="btn-group pull-right">
+                <button class="btn btn-success btn-xs" ng-click="compile(3,-1)">
+                    +新增模块
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table text-center">
+                <thead>
+                    <tr class="table-header">
+                        <!-- <th class="text-center">序号</th> -->
+                        <th class="text-center">ID</th>
+                        <th class="text-center">模块名</th>
+                        <th class="text-center">父节点ID</th>
+                        <th class="text-center">URL</th>
+                        <th class="text-center">创建时间</th>
+                        <th class="text-center">创建人</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in modulesList">
+                        <!-- <td>{{$index +1 }}</td> -->
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            {{item.parentId}}
+                        </td>
+                        <td>
+                            {{item.moduleUrl}}
+                        </td>
+                        <td>
+                            <div>{{item.createAt |date: "yyyy-MM-dd"}}</div>
+                            <div>{{item.createAt |date: "HH:mm:ss"}}</div>
+                        </td>
+                        <td>{{item.createBy}}</td>
+                        <td>
+                            <button class="btn btn-succsee" ng-click="compile(2,item.id)">编辑</button>
+                            <button class="btn btn-danger" ng-click="delete(item.id)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    <!-- 分页自定义指令 -->
+    <pagination  ng-if="total" total="{{total}}"></pagination>

@@ -7,106 +7,134 @@
                 <div class="col-md-4 ">
                     <label class="control-label col-md-4 pd-left-0">标题</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.nick">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.title">
                     </div>
                 </div>
                 <div class="col-md-4 ">
-                    <label class="control-label col-md-4 pd-left-0">编辑人</label>
+                    <label class="control-label col-md-4 pd-left-0">作者</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.uid" numberic-input="">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.author" numberic-input="">
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label class="control-label col-md-4 pd-left-0">状态</label>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">点赞数</label>
                     <div class="col-md-8">
-                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.occupation">
-                        </select>
+                        <input class="float-l form-control max-width-40" ng-model="params.praise[0]">
+                        <label class="float-l  ">一</label>
+                        <input class="float-l form-control max-width-40" ng-model="params.praise[1]">
                     </div>
                 </div>
             </div>
             <div class="form-group ">
-                <div class="col-md-4 ">
-                    <label class="control-label col-md-4 pd-left-0">编辑时间</label>
-                    <div class="col-md-8">
-                        <i class="fa fa-calendar pos-abs-10-20"></i>
-                        <input type="text" placeholder="年/月/日" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.nick">
-                    </div>
-                </div>
-                <div class="col-md-4 ">
-                    <label class="control-label col-md-4 pd-left-0">阅读量</label>
-                    <div class="col-md-8">
-                        <input class="float-l form-control max-width-40">
-                        <label class="float-l  ">一</label>
-                        <input class="float-l form-control max-width-40">
-                    </div>
-                </div>
                 <div class="col-md-4">
-                    <label class="control-label col-md-4 pd-left-0">收藏量</label>
+                    <label class="control-label col-md-4 pd-left-0">状态</label>
                     <div class="col-md-8">
-                        <input class="float-l form-control max-width-40">
+                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.status">
+                            <option value="">全部</option>
+                            <option value="true">上线</option>
+                            <option value="false">下架</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="control-label col-md-4 pd-left-0">分类</label>
+                    <div class="col-md-8">
+                        <select 
+                                class="form-control ng-pristine ng-untouched ng-valid" 
+                                ng-options="item.name as item.name for item in articleClass " 
+                                ng-model="params.classify">
+                        </select>
+                        <!-- <i class="fa fa-calendar pos-abs-10-20"></i>
+                        <input type="text" placeholder="年/月/日缺字段" class="form-control ng-pristine ng-untouched ng-valid" ng-model="params.update"> -->
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="control-label col-md-4 pd-left-0">收藏数</label>
+                    <div class="col-md-8">
+                        <input class="float-l form-control max-width-40" ng-model="params.collect[0]">
                         <label class="float-l  ">一</label>
-                        <input class="float-l form-control max-width-40">
+                        <input class="float-l form-control max-width-40" ng-model="params.collect[1]">
                     </div>
                 </div>
             </div>
             <div class="col-md-1 pull-right">
-                <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+                <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(params.title,params.author,params.status,params.classify,params.praise,params.collect,params.pageSize,params.pageNum)">
             </div>
             <div class="col-md-1 pull-right">
-                <input type="button" value="清空" class="btn btn-danger btn-md form-group" ng-click="search('','','','')">
+                <input type="button" value="清空" class="btn btn-danger btn-md form-group" ng-click="search('','','','','','','','','')">
             </div>
         </form>
     </div>
 </div>
 <!-- Article -->
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         <strong>文章列表</strong>
         <div class="btn-group pull-right">
-            <button class="btn btn-success btn-xs">
+            <a class="btn btn-success btn-xs" ng-click="compile(3,-1)">
                 +新增文章
-            </button>
+            </a>
         </div>
     </div>
     <div class="panel-body">
         <table class="table text-center">
             <thead>
                 <tr class="table-header">
-                    <th>序号</th>
-                    <th>封面</th>
-                    <th>标题</th>
-                    <th>编辑人</th>
-                    <th>编辑时间</th>
-                    <th>阅读量</th>
-                    <th>收藏量</th>
-                    <th>状态</th>
-                    <th>操作</th>
+                    <th class="text-center">序号</th>
+                    <th class="text-center">标题</th>
+                    <th class="text-center">封面</th>
+                    <th class="text-center">分类</th>
+                    <th class="text-center">作者</th>
+                    <th class="text-center">摘要</th>
+                    <th class="text-center">收藏数</th>
+                    <th class="text-center">点赞数</th>
+                    <th class="text-center">状态</th>
+                    <th class="text-center">操作</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="x in articleLists">
-                    <td>{{$index * i + 1}}</td>
-                    <td>
-                        <img src="{{x.src}}">
+                <tr ng-repeat="item in articleList track by $index">
+                    <td> {{$index + 1}}</td>
+                    <td class="text-center">
+                        <p class="articl-title">{{item.title}}</p>
                     </td>
                     <td>
-                        <p class="articl-title">{{x.title}}</p>
+                        <img class="img-60-30" src="{{item.coverPlanUrl}}"> 403
                     </td>
-                    <td>{{x.auther}}</td>
-                    <td>{{x.editTime}}</td>
-                    <td>{{x.nums1}}</td>
-                    <td>{{x.nums2}}</td>
-                    <td>{{x.statue}}</td>
+                    <td>{{item.classify}}</td>
+                    <td>{{item.author}}</td> 
+                    <td>{{item.digest}}</td>
+                    <td>{{item.collect}}</td>
+                    <td>{{item.praise}}</td>
+                    <td>{{item.status | status}}</td>
                     <td>
-                        <button class="btn btn-info" ng-click="check()">查看</button>
-                        <button class="btn btn-warning" ng-click="check()">下架</button>
-                        <button class="btn btn-succsee" ng-click="check()">编辑</button>
-                        <button class="btn btn-danger" ng-click="check()">删除</button>
+                        <button class="btn btn-info" ng-click="compile(1,item.id)">查看</button>
+                        <button class="btn btn-warning" ng-click="changeState(item.id)">{{item.status | btnStatus}}</button>
+                        <button class="btn btn-succsee" ng-click="compile(2,item.id)">编辑</button>
+                        <!-- <button class="btn btn-danger" ng-click="delete(item.id)">删除</button> -->
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-
+<img src="https://images2018.cnblogs.com/news/24442/201807/24442-20180710085714894-1703644023.jpg" alt="">
 <!-- 分页自定义指令 -->
+<pagination  ng-if="total" total="{{total}}"></pagination>
+
+<ul class="paging" ng-if="false">
+    <span class="m10">每页显示
+        <input type="number" ng-model="listSize">条</span>
+    <button class="btn" ng-click="changePage('first')">首页</button>
+    <button class="btn" ng-click="changePage('-1')">上一页</button>
+    <a ng-repeat="item in range" ng-class="{true: 'check'}[curr == item]" ng-click="clickPage()">{{item}}</a>
+    <button class="btn" ng-click="changePage('+1')">下一页</button>
+    <button class="btn" ng-click="changePage('end')">尾页</button>
+    <span class="m10">一共{{all}}页</span>
+    <span class="m10">跳转到
+        <input type="number" value="" ng-model="jumpPage">页</span>
+    <button class="btn" ng-click="jump()">确定</button>
+</ul>
+<!-- <upload-file ng-if="totalPage" total={{totalPage}}> </upload-file> -->

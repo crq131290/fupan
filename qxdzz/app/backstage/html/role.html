@@ -7,13 +7,16 @@
                 <div class="col-md-5 ">
                     <label class="control-label col-md-4 pd-left-0">角色</label>
                     <div class="col-md-8">
-                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.occupation">
+                        <select 
+                            class="form-control ng-pristine ng-untouched ng-valid" 
+                            ng-options=" item for item in roleNames " 
+                            ng-model="params.roleName">
                         </select>
                     </div>
                 </div>
                 <div class="col-md-5 col-md-offset-1 ">
                     <div class="col-md-1 pull-right">
-                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(startAt,endAt,params.type,params.status,page)">
+                        <input type="button" value="搜索" class="btn btn-primary btn-md form-group" ng-click="search(params.roleName)">
                     </div>
                 </div>
             </div>
@@ -23,13 +26,13 @@
 </div>
 
 
-<!-- Article -->
+<!-- role -->
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <strong>视频列表</strong>
+        <strong>角色列表</strong>
         <div class="btn-group pull-right">
-            <button class="btn btn-success btn-xs">
-                +新增视频
+            <button class= "btn btn-success btn-xs" ng-click="compile(3,-1)">
+                +新增角色
             </button>
         </div>
     </div>
@@ -37,24 +40,22 @@
         <table class="table text-center">
             <thead>
                 <tr class="table-header">
-                    <th>ID</th>
-                    <th>角色</th>
-                    <th>编辑时间</th>
-                    <th>编辑人</th>
-                    <th>操作</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">角色</th>
+                    <th class="text-center">编辑时间</th>
+                    <th class="text-center">编辑人</th>
+                    <th class="text-center">操作</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="x in articleLists">
-                    <td>{{x.ID}}</td>
-                    <td>{{x.role}}</td>
-                    <td>{{x.editoTime}}</td>
-                    <td>{{x.editor}}</td>
+                <tr ng-repeat="item in roleLists">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.createAt}}</td>
+                    <td>{{item.createBy}}</td>
                     <td>
-                        <button class="btn btn-info" ng-click="check()">查看</button>
-                        <button class="btn btn-warning" ng-click="check()">下架</button>
-                        <button class="btn btn-succsee" ng-click="check()">编辑</button>
-                        <button class="btn btn-danger" ng-click="check()">删除</button>
+                        <button class="btn btn-succsee" ng-click="compile(2,item.id)">编辑</button>
+                        <button class="btn btn-danger" ng-click="delete(item.id)">删除</button>
                     </td>
                 </tr>
             </tbody>
@@ -63,3 +64,4 @@
 </div>
 
 <!-- 分页自定义指令 -->
+<pagination  ng-if="total" total="{{total}}"></pagination>

@@ -1,0 +1,60 @@
+<ul class="pagination pull-right">
+    <!-- <li class="pull-left paginationCenter">
+    每页显示
+    <input type="text" class="paginationGo text-center" ng-model="size" ng-change="changeSize()"/>
+    条
+    </li> -->
+    <li>
+        <button type="button"
+                ng-disabled="isDisabled(1)"
+                ng-class="{'noNeedWhite':isDisabled(1)}"
+                ng-click="goPage(1)"
+                class="btn btn-default ">
+            首页
+        </button>
+    </li>
+    <li>
+        <button ng-if="isHavePrePage()"
+                ng-click="goPage(activePage - 1)" type="button" class="btn btn-default">
+            <
+        </button>
+    </li>
+    
+    <li ng-repeat="li in pageList track by $index" ng-class="{'active': isActive(li)}">
+        <button type="button" ng-click="goPage(li)" ng-class="{'current-active': isActive(li)}"
+                ng-disabled="isDisabled(li)"
+                class="btn btn-default bgd-00ac6f">
+            {{li}}
+        </button>
+    </li>
+
+    <li>
+        <button ng-if="isHaveNextPage()"
+                ng-click="goPage(activePage + 1)"
+                type="button" class="btn btn-default">
+            >
+        </button>
+    </li>
+    <li>
+        <button type="button"
+                ng-disabled="isDisabled(totalPage)" ng-click="goPage(totalPage)"
+                ng-class="{'noNeedWhite':isDisabled(totalPage)}"
+                class="btn btn-default">
+            末页
+        </button>
+    </li>
+    <li class="pagination-jump">
+        去第
+        <!--<p style="display: inline-block">-->
+        <input type="text" class="paginationGo form-control inline-block"
+               ng-keyup="enterGoPage($event)"
+               ng-model="jumpPage" ng-change="changeInput()"/>
+        <!--</p>-->
+        页
+        <button type="button"                
+                ng-click="goPage(jumpPage)"
+                class="btn btn-default pull-right">
+            确定
+        </button>
+    </li>
+</ul>

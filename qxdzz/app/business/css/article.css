@@ -1,23 +1,105 @@
 .padd-top-15 {
-    padding-top:15px; 
+  padding-top: 15px;
 }
 .pos-rel {
-    position: relative;
+  position: relative;
 }
 .pos-abs-10-20 {
-    position: absolute;
-    top:10px;
-    right: 20px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 .articl-title {
-    width: 7em;
+  margin: 0 auto;
+  max-width: 14em;
 }
 .pull-right {
-    float: right !important;
+  float: right !important;
 }
 .max-width-40 {
-    max-width: 45.6%;
+  max-width: 45.6%;
 }
 .float-l {
-    float: left;
+  float: left;
+}
+.pd-l-45 {
+  padding-left: 55px;
+}
+.img-60-30 {
+  width: 120px;
+  height: 60px;
+}
+.mg-b-20 {
+  margin-bottom: 20px;
+}
+.table tbody tr td {
+  vertical-align: middle;
+}
+
+/* 分页 */
+.paging {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.paging a {
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+}
+
+.paging .check {
+  background: #337ab7;
+  color: #fff;
+}
+
+.paging input {
+  width: 40px;
+  outline: none;
+}
+
+.paging input[type="number"]::-webkit-inner-spin-button,
+.paging input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.paging .btn {
+  margin: 0 10px;
+}
+/* 分业按钮结束 */
+
+.coverImg {
+  max-width: 400px;
+  max-height: 200px;
+}
+
+/* wangeditor */
+.w-e-toolbar {
+  flex-wrap: wrap;
+}
+#explain .w-e-toolbar .w-e-menu {
+  padding: 6px 16px;
+}
+#explain .w-e-text-container {
+  max-height: 200px;
+}
+.mw-5e {
+  max-width: 5em;
+}
+/* 视频 */
+.mx-100-100 {
+  max-width: 100px;
+  max-height: 100px;
+}
+.padd-btm-15 {
+  padding-bottom: 15px;
+}
+.flex {
+  display: flex;
+  align-items: center;
 }

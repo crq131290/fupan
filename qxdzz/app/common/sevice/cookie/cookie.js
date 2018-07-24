@@ -26,7 +26,14 @@ angular.module("ourApp")
             return factory
         };
     })
- 
+    .factory('roleArry',
+        function(){
+            let roleArry = [];
+            for(let i=0;i<10;i++) {
+                roleArry.push(false)
+            }
+            return roleArry
+        })
     // .factory("_Cookie", function() {
     //     return {
     //         setCookie: function(c_name,c_value,expiredays) {

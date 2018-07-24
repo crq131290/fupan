@@ -1,0 +1,64 @@
+<h1>新增banner</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>新增,编辑,查看,视频</strong>
+    </div>
+
+
+    <div class="panel-body">
+        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">banner图类型</label>
+                    <div class="col-md-8">
+                        <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.occupation">
+                            <option value="">初一</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">跳转链接</label>
+                    <div class="col-md-8">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="vm.params.nick">
+                  
+                    </div>
+                </div>
+            </div>
+            
+                <div class="form-group ">
+                        <div class="col-md-10 ">
+                            <label class="control-label col-md-4 pd-left-0">封面</label>
+                            <div class="col-md-8">
+                                <div class="col-md-8">
+                                    <input type="button" value="上传" class="btn btn-info btn-md form-group" ng-click="search('','','','')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-8">
+                            <input type="button" value="自定义指令" class="btn btn-info btn-md form-group" ng-click="search('','','','')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input type="button" value="保存" class="btn btn-info btn-md form-group" ng-click="search('','','','')">
+                            <input type="button" value="取消" class="btn btn-info btn-md form-group pull-right" ng-click="search('','','','')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

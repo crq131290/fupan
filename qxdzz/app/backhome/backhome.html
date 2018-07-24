@@ -19,17 +19,18 @@
             </div>
         </li>
         <li ng-repeat="x in menu track by $index" class="panel panel_nav_no">
-            <div class="menu_title"  ng-click="list_show(x.id)" data-parent="#accordion" data-toggle="collapse" data-target="#{{'nav'+$index}}">
+            <div class="menu_title" ng-class="{a_active:(x.id == menuId )}"  ng-click="list_show(x.id)" data-parent="#accordion" data-toggle="collapse" data-target="#{{'nav'+$index}}">
                 <span class="fa fa-wrench transitonz-180"></span>&emsp;
                 <span ng-bind="x.name"></span>
-                <span class="glyphicon glyphicon-menu-left" ng-class="{'glyphicon-menu-up':x.id == menuId}">
+                <span class="glyphicon glyphicon-menu-left" ng-class="{'glyphicon-menu-up':(x.id == menuId )}">
                 </span>
             </div>
             <ul id="{{'nav'+$index}}" class="collapse panel-collapse " data-parent="#accordion">
                 <li class="submenu" ng-repeat="subItem in x.sub">
-                    <a class="nav-a" id="{{subItem.id}}" ui-sref="{{subItem.url}}" ng-class="{a_active:subItem.id == itemId}" ng-bind="subItem.name"
+                    <a class="nav-a" id="{{subItem.id}}" ui-sref="{{subItem.moduleUrl}}" ng-class="{a_active:subItem.id == itemId}" ng-bind="subItem.name"
                         ng-click="active(subItem.id)">
                     </a>
+                    <!-- <a ui-sref="backhome.{{subItem.moduleUrl}}"> 1111</a> -->
                 </li>
             </ul>
         </li>

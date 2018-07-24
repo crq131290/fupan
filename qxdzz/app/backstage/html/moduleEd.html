@@ -1,0 +1,74 @@
+<h1>module{{header}}</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>{{header}}模块</strong>
+    </div>
+    <div class="panel-body">
+        <form name="moduleForm" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">模块名</label>
+                    <div class="col-md-8">
+                        <input  type="text" 
+                                name="mName"
+                                class="form-control ng-pristine ng-untouched ng-valid"
+                                ng-required="true"
+                                maxlength="25"
+                                ng-model="moduleInfo.name">
+                        <!-- tip1 -->
+                        <div class="hint" ng-messages="moduleForm.mName.$error">                
+                            <div ng-message="required" ng-show="moduleForm.mName.$touched || {{show_msg}}">模块名不能为空</div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">父节点ID</label>
+                    <div class="col-md-8">
+                        <input  type="text" 
+                                name="mParent"
+                                class="form-control ng-pristine ng-untouched ng-valid"
+                                ng-required="true"
+                                maxlength="25"
+                                ng-model="moduleInfo.parentId">
+                        <!-- tip2 -->
+                        <div class="hint" ng-messages="moduleForm.mParent.$error">                
+                            <div ng-message="required" ng-show="moduleForm.mParent.$touched || {{show_msg}}">模块名不能为空</div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">Url</label>
+                    <div class="col-md-8">
+                        <input  type="text" 
+                                name="moduleUrl"
+                                class="form-control ng-pristine ng-untouched ng-valid"
+                                ng-required="true"
+                                maxlength="25"
+                                ng-model="moduleInfo.moduleUrl">
+                        <!-- tip1 -->
+                        <div class="hint" ng-messages="moduleForm.moduleUrl.$error">                
+                            <div ng-message="required" ng-show="moduleForm.moduleUrl.$touched || {{show_msg}}">模块名不能为空</div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input type="button" value="取消" class="btn btn-danger btn-md form-group" ng-click="cancle()">
+                            <input ng-disabled="(moduleForm.$invalid) || tipshow " type="button" value="保存" class="btn btn-info btn-md form-group pull-right" ng-click="sendData()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

@@ -1,0 +1,110 @@
+<h1>{{header}}文章</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>{{header}}文章</strong>
+    </div>
+    <div class="panel-body">
+        <form  name="articleForm" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-date ng-invalid-min ng-invalid-max" role="form"
+            id="blur">
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">标题</label>
+                    <div class="col-md-8">
+                        <input  name="atitle" 
+                                ng-disabled="disable"
+                                ng-required="true"
+                                type="text" 
+                                ng-model="title"
+                                maxlength="25"
+                                class="form-control ng-pristine ng-untouched ng-valid">
+                        <!-- tip1 -->
+                        <div class="hint col-md-12" ng-messages="articleForm.atitle.$error">
+                            <div class=" row" ng-message="required" ng-show="(articleForm.atitle.$touched) || {{show_msg}}">用户名不能为空</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group " ng-if="disable">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">收藏量</label>
+                    <div class="col-md-8">                       
+                        <input ng-disabled="disable" ng-model="collect" class="form-control ng-pristine ng-untouched ng-valid" ng-click="search('','','','')">
+                     </div>
+                </div>
+            </div>
+            <div class="form-group " ng-if="disable">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">阅读量</label>
+                    <div class="col-md-8">
+                        <input ng-disabled="disable" ng-model="praise" class="form-control ng-pristine ng-untouched ng-valid" ng-click="search('','','','')">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">封面</label>
+                    <div class="col-md-8">
+                        <upload-file tipshow="tipshow" imgshow="imgshow" url="url" myimg-url="myimgUrl" img-url="imgUrl" disable="disable"></upload-file>                      
+                    </div>
+                    <!-- <input ng-model="myimgUrl"> -->
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">作者</label>
+                    <div class="col-md-8">
+                        <input ng-disabled="disable" maxlength="28" ng-model="author" type="text" class="form-control ng-pristine ng-untouched ng-valid">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                    <div class="col-md-10 ">
+                        <label class="control-label col-md-4 pd-left-0">简介</label>
+                        <div class="col-md-8">
+                            <textarea
+                                name="adigest"
+                                ng-disabled="disable" 
+                                ng-model="digest"
+                                ng-required="true"
+                                maxlength="56"
+                                class="form-control 
+                                ng-pristine 
+                                ng-untouched 
+                                ng-valid" 
+                                name="txt" 
+                                clos=",50" 
+                                rows="5" 
+                                warp="virtual">
+                            </textarea>                    
+                            <div class="hint col-md-12" ng-messages="articleForm.adigest.$error">
+                                <div class=" row" ng-message="required" ng-show="(articleForm.adigest.$touched) || {{show_msg}}">简介不能为空</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <label class="control-label col-md-4 pd-left-0">正文</label>
+                    <div class="col-md-8">
+                        <!-- tip1 -->
+                        <div class="hint col-md-12">
+                            <div class=" row" ng-show="tboxShow">正文不能为空</div>
+                        </div>
+                        <div id="explain"  ng-blur="checkText()"></div>    
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-10 ">
+                    <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input ng-disabled="disable" type="button" value="取消" class="btn btn-danger btn-md form-group" ng-click="cancle()">
+                            <input ng-disabled="disable || (articleForm.$invalid) || tipshow || tboxShow" type="button" value="保存" class="btn btn-info btn-md form-group pull-right" ng-click="sendData()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

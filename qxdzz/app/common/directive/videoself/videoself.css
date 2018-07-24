@@ -1,0 +1,21 @@
+.video-js.vjs-playing .vjs-tech {
+    pointer-events: auto;
+}
+.vjs-paused .vjs-big-play-button,
+.vjs-paused.vjs-has-started .vjs-big-play-button {
+    display: block;
+}
+.video-js .vjs-time-control{display:block;}
+.video-js .vjs-remaining-time{display: none;}
+.video-js {
+    max-height: 400px;
+    width: 40%;
+    height: 30%;
+    margin: 0 auto; 
+}
+.video-js .vjs-tech {
+    position: relative;
+}
+.vjs-tech {
+    max-height: 400px;
+}
